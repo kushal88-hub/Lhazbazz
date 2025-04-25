@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Lhazeen!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0 0 6rem 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #ffe4ec 0%, #fddde6 100%);
+      text-align: center;
+      color: #5e2b5e;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #8e44ad;
+      font-size: 4rem;
+      margin-top: 2rem;
+      text-shadow: 0 0 12px #ffffffaa;
+    }
+
+    h2 {
+      color: #34495e;
+      font-size: 1.6rem;
+      margin-top: -0.5rem;
+    }
+
+    p {
+      max-width: 800px;
+      margin: 2rem auto;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      padding: 0 1rem;
+      color: #2c3e50;
+    }
+
+    .images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem;
+      gap: 1rem;
+    }
+
+    .images img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    .images img:nth-child(1) { animation-delay: 0s; }
+    .images img:nth-child(2) { animation-delay: 0.5s; }
+    .images img:nth-child(3) { animation-delay: 1s; }
+    .images img:nth-child(4) { animation-delay: 1.5s; }
+
+    @keyframes fadeIn {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    audio {
+      margin: 2rem auto;
+      display: block;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #f8c291;
+      clip-path: polygon(50% 0%, 61% 38%, 98% 35%, 68% 59%, 79% 91%, 50% 72%, 21% 91%, 32% 59%, 2% 35%, 39% 38%);
+      animation: floatStar 8s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes floatStar {
+      0% { transform: translateY(100vh) rotate(0); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 24px;
+      height: 20px;
+      background: radial-gradient(ellipse at center, #f6d365 0%, #fda085 100%);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%, 50% 60%);
+      animation: flyButterfly 10s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes flyButterfly {
+      0% { transform: translateY(100vh) scale(1); opacity: 0; }
+      25% { opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+    }
+
+    .floating-message {
+      position: absolute;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      color: #FFFFFF;
+      opacity: 0;
+      animation: floatMessage 6s ease-in-out forwards;
+      z-index: 1;
+      white-space: nowrap;
+    }
+
+    @keyframes floatMessage {
+      0% { transform: translateY(50px); opacity: 0; }
+      20% { opacity: 1; }
+      80% { transform: translateY(-80px); opacity: 1; }
+      100% { transform: translateY(-100px); opacity: 0; }
+    }
+
+    #surpriseBtn {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-family: 'Poppins', sans-serif;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      margin-top: 2rem;
+    }
+
+    #surpriseBtn:hover {
+      transform: scale(1.05);
+    }
+
+    #cakePopup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      display: none;
+      animation: popupIn 0.5s ease forwards;
+    }
+
+    @keyframes popupIn {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    #cakePopup img {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+
+    #cakePopup h3 {
+      margin: 0;
+      color: #c0392b;
+      font-family: 'Pacifico', cursive;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Birthday Lhazeen! 🎂</h1>
+  <h2>Here's to a beautiful soul ✨</h2>
+
+  <p>
+    I am glad to have met you — you are the sweetest, nicest, and the bestest. 💕<br>
+    As you can tell, I feel comfortable sharing everything with you and spending time whenever I can.<br>
+    I hope you get what your heart truly desires. Many happy returns of the day. Much love. 🌸
+  </p>
+
+  <div class="images">
+    <img src="images/pic1.jpg" alt="Memory 1">
+    <img src="images/pic2.jpg" alt="Memory 2">
+    <img src="images/pic3.jpg" alt="Memory 3">
+    <img src="images/pic4.jpg" alt="Memory 4">
+  </div>
+
+  <audio controls>
+    <source src="happybirthday.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button id="surpriseBtn">🎁 Tap for a Surprise!</button>
+
+  <div id="cakePopup">
+    <img src="images/cake.png" alt="Cake" />
+    <h3>Make a wish, Lhazeen! ✨</h3>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    // Confetti bursts
+    setInterval(() => {
+      confetti({
+        particleCount: 20,
+        spread: 360,
+        origin: { x: Math.random(), y: Math.random() * 0.6 },
+        colors: ['#fda085', '#f6d365', '#8ec5fc', '#e0c3fc', '#f8c291']
+      });
+    }, 1000);
+
+    // Floating stars
+    function createStar() {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 8000);
+    }
+    setInterval(createStar, 800);
+
+    // Floating butterflies
+    function createButterfly() {
+      const butterfly = document.createElement("div");
+      butterfly.className = "butterfly";
+      butterfly.style.left = Math.random() * window.innerWidth + "px";
+      butterfly.style.background = `radial-gradient(ellipse at center, hsl(${Math.random() * 360}, 90%, 80%) 0%, #fff 100%)`;
+      document.body.appendChild(butterfly);
+      setTimeout(() => butterfly.remove(), 10000);
+    }
+    setInterval(createButterfly, 1200);
+
+    // Floating messages
+    const messages = [
+      "You're truly one of a kind 🖤",
+      "Keep shining, Lhazeen ✨",
+      "Wishing you joy & love 💫",
+      "Today is all about YOU 🎈",
+      "You make life brighter 🌼",
+      "Keep being wonderful 💕",
+      "Smiles suit you best 😄",
+      "So much love for you ❤️"
+    ];
+
+    function createFloatingMessage() {
+      const msg = document.createElement("div");
+      msg.className = "floating-message";
+      msg.textContent = messages[Math.floor(Math.random() * messages.length)];
+      msg.style.left = Math.random() * (window.innerWidth - 150) + "px";
+      msg.style.top = (window.innerHeight - 100) + "px";
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 6000);
+    }
+    setInterval(createFloatingMessage, 3000);
+
+    // Cake popup
+    document.getElementById("surpriseBtn").addEventListener("click", () => {
+      const popup = document.getElementById("cakePopup");
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 4000);
+    });
+  </script>
+</body>
+</html>
+
